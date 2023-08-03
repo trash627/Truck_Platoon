@@ -6,12 +6,18 @@ model for the follower vehicle in a two-vehicle highway platoon which maintains 
 between the lead vehicle and the control decision taken by the follower vehicle. We then extend our model to a three-vehicle platoon with two follower vehicles and one lead 
 vehicle.
 
-This repository includes the KeYmaera X files showing the proof of the models, the final report, and the presentation slides of the project.
+### This repository includes the KeYmaera X files showing the proof of the models, the final report, and the presentation slides of the project.
 
-To reproduce results:
+## To reproduce results
 
 1. Download KeYmaera X (https://keymaerax.org/)
 2. Upload the provided files.
 3. Run the tactical proof.
 
-Concepts used: Formal Methods, Model Theory, Proof Theory, Sequent Calculus.
+## Concepts used
+
+1. Formal Methods
+2. Model Theory
+3. Proof Theory
+4. Sequent Calculus
+5. Event-Triggered Control
