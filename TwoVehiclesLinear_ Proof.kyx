@@ -1,0 +1,52 @@
+﻿/* Exported from KeYmaera X v5.0.1 */
+
+Theorem "TwoVehiclesLinear"
+
+Definitions
+    Real A;
+    Real B;
+    Real b;
+    Real td;
+    Real d;
+End.
+
+ProgramVariables
+    Real xl;
+    Real vl;
+    Real al;
+    
+    Real xf;
+    Real vf;
+    Real af;
+    
+    Real t;
+End.
+
+
+Problem
+  /* INITIAL CONDITIONS */
+  (xf < xl & xl - xf >= d & xl > xf + (vf^2)/(2*b) + (A/b + 1)*((A/2)*(td^2) + td*vf) - (vl^2)/(2*b) & B >= b & b > 0 & vf >= 0 & vl >= 0 & A >= 0 & td >= 0)
+  ->
+  [
+    {
+        /*CONTROL*/
+        {
+            {al := *; ?(-B <= al & al <= A);}                /*LEAD VEHICLE*/
+            {af := *; ?(-B <= af & af <= A); ++ ?(xl > xf + (vf^2)/(2*b) + (A/b + 1)*((A/2)*(td^2) + td*vf) - (vl^2)/(2*b)); af := *; ?(-B <= af & af <= A); ++ ?vf = 0; af := 0;} /*FOLLOWER VEHICLE*/
+        }
+        t := 0;
+        /*CONTINUOUS DYNAMICS*/
+        {
+            {xl' = vl, vl' = al, xf' = vf, vf' = af, t' = 1 & vl >= 0 & vf >= 0 & t <= td }
+        }
+    }*@invariant(xf < xl & xl - xf >= d & xf + (vf^2)/(2*b) + (A/b + 1)*((A/2)*(td^2) + td*vf) < xl + (vl^2)/(2*B) & vf >= 0 & vl >= 0)
+    
+    ](xf < xl & xl - xf >= d & xf + (vf^2)/(2*b) + (A/b + 1)*((A/2)*(td^2) + td*vf) < xl + (vl^2)/(2*B) & vf >= 0 & vl >= 0)
+    
+End.
+
+Tactic "TwoVehiclesLinear: Proof"
+todo
+End.
+
+End.
